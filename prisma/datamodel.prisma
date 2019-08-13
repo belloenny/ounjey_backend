@@ -1,0 +1,118 @@
+type Vendor {
+    id:          ID! @id @unique
+    createdAt:   DateTime! @createdAt
+    updatedAt:   DateTime! @updatedAt
+    firstName:   String!
+    lastName:    String!
+    email:       String! @unique
+    password:    String!
+    phone:       String!
+    listings:    [Listing!]!
+    vendorType:  VENDOR_TYPE
+   
+}
+type User {
+    id:         ID! @id @unique
+    createdAt:  DateTime! @createdAt
+    updatedAt:  DateTime! @updatedAt
+    email:      String!   @unique
+    firstName:  String!
+    phone:      String
+    password:   String!
+    lastName:   String!
+    address:    Location 
+    saved:      savedList
+    photoUrl:   String
+}
+
+type Location {
+    id:         ID! @id @unique
+    lat:        Float!
+    lng:        Float!
+    user:       User
+    directions: String!
+}
+type Listing {
+    id:                 ID! @id @unique
+    title:              String!
+    description:        String!
+    createdAt:          DateTime! @createdAt
+    updatedAt:          DateTime!  @updatedAt
+    maxGuests:          Int!
+    reviews:            [Review!]!
+    vendor:             Vendor!
+    pricePerPlate:      Int!
+    views:              Views 
+    bookings:           [Booking!]!
+    photos:             [Picture!]!
+}
+
+type Picture {
+    id:         ID! @id @unique
+    url:        String!
+    listing:    Listing!
+}
+
+type Views {
+    id:         ID! @id @unique
+    lastWeek:   Int!
+    listing:    Listing! 
+}
+
+type Review {
+    id:               ID! @id @unique
+    createdAt:        DateTime! @createdAt
+    title:             String!
+    comment:          String!
+    stars:            Int!
+    listing:          Listing!
+}
+
+
+type Booking {
+    id:           ID! @id @unique
+    createdAt:    DateTime! @createdAt
+    updatedAt:    DateTime! @updatedAt
+    bookee:       User!
+    listing:      Listing!
+    occasionDate: DateTime!
+    location:     Location
+    payment:      Payment 
+    isFulfilled:  Boolean @default(value:false)
+}
+
+type Payment {
+    id:               ID! @id @unique
+    createdAt:        DateTime! 
+    serviceFee:       Float!
+    price:            Float!
+    totalPrice:       Float!
+    booking:          Booking! 
+    paymentMethod:    PaymentAccount!
+}
+
+type PaymentAccount {
+    id:           ID! @id @unique
+    createdAt:    DateTime! @createdAt
+    type:         PAYMENT_PROVIDER
+    user:         User!
+    payments:     [Payment!]!
+}
+
+type savedList {
+    id:             ID! @id @unique
+    listings:       [Listing!]!
+}
+
+enum PAYMENT_PROVIDER {
+    MPESA
+    CREDIT_CARD
+}
+
+enum VENDOR_TYPE  {
+    RESTAURANT
+    INDEPENDENT
+    BARS
+}
+
+
