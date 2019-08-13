@@ -24,6 +24,7 @@ const storeUpload = async ({ stream, filename }) => {
 
 export async function processUpload(file) {
   const { stream, filename } = await file;
+  //@ts-ignore
   const { id, path } = await storeUpload({ stream, filename });
   return { id, filename, path };
 }

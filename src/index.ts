@@ -35,7 +35,7 @@ const opts = {
     port: 4000,
     cors: {
       credentials: false,
-      origin: ["http://localhost:3000"] // your frontend url.
+      origin: ["http://localhost:3000"]
     }
   };
   
