@@ -55,16 +55,15 @@ type Location {
 }
 
 type Mutation {
-  book(listingId: ID!, occasionDate: String, price: Float, serviceFee: Float, totalPrice: Float, type: String): Order
-  createlisting(description: String, maxGuests: Int, photo: [Upload!]!, pricePerPlate: Int, title: String): ListingPhotos
+  book(listingId: ID!, occasionDate: String, price: Float, serviceFee: Float, totalPrice: Float, type: PAYMENT_PROVIDER!): Order
+  createlisting(coverPhoto: Upload!, description: String, maxGuests: Int, pricePerPlate: Int, title: String, vendorID: ID): Listing
   createReview(comment: String, listingId: ID, stars: Int, title: String): Review
-  deleteBooking(id: ID): Booking
-  deleteReview(id: ID): Review
+  loginOrSignUpFacebook(idToken: String, password: String): AuthPayload
   loginuser(email: String, password: String): AuthPayload
   loginVendor(email: String, password: String): AuthPayloadVendor
   signupUser(email: String, firstName: String, lastName: String, password: String, phone: String): AuthPayload
-  signupVendor(email: String, firstName: String, lastName: String, password: String, phone: String, vendorType: String): AuthPayloadVendor
-  signupWithFaceBook(idToken: String, password: String): AuthPayload
+  signupVendor(email: String, firstName: String, lastName: String, password: String, phone: String, vendorType: VENDOR_TYPE!): AuthPayloadVendor
+  uploadPhotos(listing: ID, photos: [Upload!]!): [Picture!]
   uploadProfilePhoto(photo: Upload!, userId: ID): User
 }
 
@@ -100,18 +99,12 @@ type PaymentAccount {
 type Picture {
   id: ID!
   listing: Listing!
-  url: String!
+  src: String!
 }
 
 type Query {
-  bookings: [Booking!]
   listing(id: ID): Listing
   listings: [Listing!]
-  location: [Location!]
-  payment: [Payment!]
-  photos: [Picture!]
-  review: [Review!]
-  savedlist: [savedList!]
   user: User
   users: [User!]
   vendor: Vendor

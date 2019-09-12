@@ -38,7 +38,7 @@ export const Query = queryType({
             nullable: true,
             args: { id:idArg() },
             resolve: (parent,{id}, ctx) => {
-                return ctx.prisma.project({ id }) 
+                return ctx.prisma.listing({ id }) 
             }
         })
         t.list.field('listings',{

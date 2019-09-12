@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 import { GraphQLServer } from 'graphql-yoga'
 import { prisma } from './generated/prisma-client'
 import * as path from 'path'

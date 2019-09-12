@@ -1,6 +1,7 @@
 import {hash} from 'bcrypt'
+import { FacebookUser } from './utils'
 
-export const createPrismaUserFromFacebook = async (ctx, facebookUser,password) => {
+export const createUserFromFacebook = async (ctx:any, facebookUser:FacebookUser,password:string) => {
   const hashedpassword = await hash(password,10)
     return ctx.prisma.createUser({
       firstName: facebookUser.first_name,

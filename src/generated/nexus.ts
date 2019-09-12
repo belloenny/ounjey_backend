@@ -78,7 +78,7 @@ export interface NexusGenRootTypes {
   }
   Picture: { // root type
     id: string; // ID!
-    url: string; // String!
+    src: string; // String!
   }
   Query: {};
   Review: { // root type
@@ -175,15 +175,14 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     book: NexusGenRootTypes['Order'] | null; // Order
-    createlisting: NexusGenRootTypes['ListingPhotos'] | null; // ListingPhotos
+    createlisting: NexusGenRootTypes['Listing'] | null; // Listing
     createReview: NexusGenRootTypes['Review'] | null; // Review
-    deleteBooking: NexusGenRootTypes['Booking'] | null; // Booking
-    deleteReview: NexusGenRootTypes['Review'] | null; // Review
+    loginOrSignUpFacebook: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
     loginuser: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
     loginVendor: NexusGenRootTypes['AuthPayloadVendor'] | null; // AuthPayloadVendor
     signupUser: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
     signupVendor: NexusGenRootTypes['AuthPayloadVendor'] | null; // AuthPayloadVendor
-    signupWithFaceBook: NexusGenRootTypes['AuthPayload'] | null; // AuthPayload
+    uploadPhotos: NexusGenRootTypes['Picture'][] | null; // [Picture!]
     uploadProfilePhoto: NexusGenRootTypes['User'] | null; // User
   }
   Order: { // field return type
@@ -210,17 +209,11 @@ export interface NexusGenFieldTypes {
   Picture: { // field return type
     id: string; // ID!
     listing: NexusGenRootTypes['Listing']; // Listing!
-    url: string; // String!
+    src: string; // String!
   }
   Query: { // field return type
-    bookings: NexusGenRootTypes['Booking'][] | null; // [Booking!]
     listing: NexusGenRootTypes['Listing'] | null; // Listing
     listings: NexusGenRootTypes['Listing'][] | null; // [Listing!]
-    location: NexusGenRootTypes['Location'][] | null; // [Location!]
-    payment: NexusGenRootTypes['Payment'][] | null; // [Payment!]
-    photos: NexusGenRootTypes['Picture'][] | null; // [Picture!]
-    review: NexusGenRootTypes['Review'][] | null; // [Review!]
-    savedlist: NexusGenRootTypes['savedList'][] | null; // [savedList!]
     user: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['User'][] | null; // [User!]
     vendor: NexusGenRootTypes['Vendor'] | null; // Vendor
@@ -275,14 +268,15 @@ export interface NexusGenArgTypes {
       price?: number | null; // Float
       serviceFee?: number | null; // Float
       totalPrice?: number | null; // Float
-      type?: string | null; // String
+      type: NexusGenEnums['PAYMENT_PROVIDER']; // PAYMENT_PROVIDER!
     }
     createlisting: { // args
+      coverPhoto: any; // Upload!
       description?: string | null; // String
       maxGuests?: number | null; // Int
-      photo: any[]; // [Upload!]!
       pricePerPlate?: number | null; // Int
       title?: string | null; // String
+      vendorID?: string | null; // ID
     }
     createReview: { // args
       comment?: string | null; // String
@@ -290,11 +284,9 @@ export interface NexusGenArgTypes {
       stars?: number | null; // Int
       title?: string | null; // String
     }
-    deleteBooking: { // args
-      id?: string | null; // ID
-    }
-    deleteReview: { // args
-      id?: string | null; // ID
+    loginOrSignUpFacebook: { // args
+      idToken?: string | null; // String
+      password?: string | null; // String
     }
     loginuser: { // args
       email?: string | null; // String
@@ -317,11 +309,11 @@ export interface NexusGenArgTypes {
       lastName?: string | null; // String
       password?: string | null; // String
       phone?: string | null; // String
-      vendorType?: string | null; // String
+      vendorType: NexusGenEnums['VENDOR_TYPE']; // VENDOR_TYPE!
     }
-    signupWithFaceBook: { // args
-      idToken?: string | null; // String
-      password?: string | null; // String
+    uploadPhotos: { // args
+      listing?: string | null; // ID
+      photos: any[]; // [Upload!]!
     }
     uploadProfilePhoto: { // args
       photo: any; // Upload!

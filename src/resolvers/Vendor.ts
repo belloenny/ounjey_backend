@@ -1,5 +1,7 @@
 import { prismaObjectType } from 'nexus-prisma'
 
+
+//@ts-ignore
 export const Vendor = prismaObjectType({
     name: 'Vendor',
     definition(t) {

@@ -1083,6 +1083,8 @@ type VendorObject =
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'phone', args?: [] | false, alias?: string  } 
+  | { name: 'profilePhoto', args?: [] | false, alias?: string  } 
+  | { name: 'offer', args?: [] | false, alias?: string  } 
   | { name: 'listings', args?: VendorListingsArgs[] | false, alias?: string  } 
   | { name: 'vendorType', args?: [] | false, alias?: string  } 
 
@@ -1095,6 +1097,8 @@ type VendorFields =
   | 'email'
   | 'password'
   | 'phone'
+  | 'profilePhoto'
+  | 'offer'
   | 'listings'
   | 'vendorType'
 
@@ -1174,6 +1178,22 @@ export interface VendorFieldDetails {
     nullable: false
     resolve: undefined
   }
+  profilePhoto: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  offer: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   listings: {
     type: 'Listing'
     args: Record<VendorListingsArgs, core.NexusArgDef<string>>
@@ -1217,6 +1237,7 @@ type ListingObject =
   | { name: 'vendor', args?: [] | false, alias?: string  } 
   | { name: 'pricePerPlate', args?: [] | false, alias?: string  } 
   | { name: 'views', args?: [] | false, alias?: string  } 
+  | { name: 'coverPhoto', args?: [] | false, alias?: string  } 
   | { name: 'bookings', args?: ListingBookingsArgs[] | false, alias?: string  } 
   | { name: 'photos', args?: ListingPhotosArgs[] | false, alias?: string  } 
 
@@ -1231,6 +1252,7 @@ type ListingFields =
   | 'vendor'
   | 'pricePerPlate'
   | 'views'
+  | 'coverPhoto'
   | 'bookings'
   | 'photos'
 
@@ -1356,6 +1378,14 @@ export interface ListingFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Views | null> | prisma.Views | null
+  }
+  coverPhoto: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
   }
   bookings: {
     type: 'Booking'
@@ -2080,12 +2110,12 @@ export interface PaymentAccountFieldDetails {
 type PictureObject =
   | PictureFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'url', args?: [] | false, alias?: string  } 
+  | { name: 'src', args?: [] | false, alias?: string  } 
   | { name: 'listing', args?: [] | false, alias?: string  } 
 
 type PictureFields =
   | 'id'
-  | 'url'
+  | 'src'
   | 'listing'
 
 
@@ -2101,7 +2131,7 @@ export interface PictureFieldDetails {
     nullable: false
     resolve: undefined
   }
-  url: {
+  src: {
     type: 'String'
     args: {}
     description: string
@@ -5025,6 +5055,8 @@ type VendorPreviousValuesObject =
   | { name: 'email', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'phone', args?: [] | false, alias?: string  } 
+  | { name: 'profilePhoto', args?: [] | false, alias?: string  } 
+  | { name: 'offer', args?: [] | false, alias?: string  } 
   | { name: 'vendorType', args?: [] | false, alias?: string  } 
 
 type VendorPreviousValuesFields =
@@ -5036,6 +5068,8 @@ type VendorPreviousValuesFields =
   | 'email'
   | 'password'
   | 'phone'
+  | 'profilePhoto'
+  | 'offer'
   | 'vendorType'
 
 
@@ -5105,6 +5139,22 @@ export interface VendorPreviousValuesFieldDetails {
     description: string
     list: undefined
     nullable: false
+    resolve: undefined
+  }
+  profilePhoto: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
+  offer: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
     resolve: undefined
   }
   vendorType: {
@@ -5504,6 +5554,7 @@ type ListingPreviousValuesObject =
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'maxGuests', args?: [] | false, alias?: string  } 
   | { name: 'pricePerPlate', args?: [] | false, alias?: string  } 
+  | { name: 'coverPhoto', args?: [] | false, alias?: string  } 
 
 type ListingPreviousValuesFields =
   | 'id'
@@ -5513,6 +5564,7 @@ type ListingPreviousValuesFields =
   | 'updatedAt'
   | 'maxGuests'
   | 'pricePerPlate'
+  | 'coverPhoto'
 
 
 
@@ -5569,6 +5621,14 @@ export interface ListingPreviousValuesFieldDetails {
   }
   pricePerPlate: {
     type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  coverPhoto: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -5653,11 +5713,11 @@ export interface PictureSubscriptionPayloadFieldDetails {
 type PicturePreviousValuesObject =
   | PicturePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'url', args?: [] | false, alias?: string  } 
+  | { name: 'src', args?: [] | false, alias?: string  } 
 
 type PicturePreviousValuesFields =
   | 'id'
-  | 'url'
+  | 'src'
 
 
 
@@ -5672,7 +5732,7 @@ export interface PicturePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  url: {
+  src: {
     type: 'String'
     args: {}
     description: string
@@ -6498,6 +6558,20 @@ export interface ListingWhereInput {
   pricePerPlate_gt?: number | null
   pricePerPlate_gte?: number | null
   views?: ViewsWhereInput | null
+  coverPhoto?: string | null
+  coverPhoto_not?: string | null
+  coverPhoto_in?: string[]
+  coverPhoto_not_in?: string[]
+  coverPhoto_lt?: string | null
+  coverPhoto_lte?: string | null
+  coverPhoto_gt?: string | null
+  coverPhoto_gte?: string | null
+  coverPhoto_contains?: string | null
+  coverPhoto_not_contains?: string | null
+  coverPhoto_starts_with?: string | null
+  coverPhoto_not_starts_with?: string | null
+  coverPhoto_ends_with?: string | null
+  coverPhoto_not_ends_with?: string | null
   bookings_every?: BookingWhereInput | null
   bookings_some?: BookingWhereInput | null
   bookings_none?: BookingWhereInput | null
@@ -6589,6 +6663,20 @@ export type ListingWhereInputInputObject =
   | { name: 'pricePerPlate_gt', alias?: string  } 
   | { name: 'pricePerPlate_gte', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
+  | { name: 'coverPhoto_not', alias?: string  } 
+  | { name: 'coverPhoto_in', alias?: string  } 
+  | { name: 'coverPhoto_not_in', alias?: string  } 
+  | { name: 'coverPhoto_lt', alias?: string  } 
+  | { name: 'coverPhoto_lte', alias?: string  } 
+  | { name: 'coverPhoto_gt', alias?: string  } 
+  | { name: 'coverPhoto_gte', alias?: string  } 
+  | { name: 'coverPhoto_contains', alias?: string  } 
+  | { name: 'coverPhoto_not_contains', alias?: string  } 
+  | { name: 'coverPhoto_starts_with', alias?: string  } 
+  | { name: 'coverPhoto_not_starts_with', alias?: string  } 
+  | { name: 'coverPhoto_ends_with', alias?: string  } 
+  | { name: 'coverPhoto_not_ends_with', alias?: string  } 
   | { name: 'bookings_every', alias?: string  } 
   | { name: 'bookings_some', alias?: string  } 
   | { name: 'bookings_none', alias?: string  } 
@@ -6829,6 +6917,34 @@ export interface VendorWhereInput {
   phone_not_starts_with?: string | null
   phone_ends_with?: string | null
   phone_not_ends_with?: string | null
+  profilePhoto?: string | null
+  profilePhoto_not?: string | null
+  profilePhoto_in?: string[]
+  profilePhoto_not_in?: string[]
+  profilePhoto_lt?: string | null
+  profilePhoto_lte?: string | null
+  profilePhoto_gt?: string | null
+  profilePhoto_gte?: string | null
+  profilePhoto_contains?: string | null
+  profilePhoto_not_contains?: string | null
+  profilePhoto_starts_with?: string | null
+  profilePhoto_not_starts_with?: string | null
+  profilePhoto_ends_with?: string | null
+  profilePhoto_not_ends_with?: string | null
+  offer?: string | null
+  offer_not?: string | null
+  offer_in?: string[]
+  offer_not_in?: string[]
+  offer_lt?: string | null
+  offer_lte?: string | null
+  offer_gt?: string | null
+  offer_gte?: string | null
+  offer_contains?: string | null
+  offer_not_contains?: string | null
+  offer_starts_with?: string | null
+  offer_not_starts_with?: string | null
+  offer_ends_with?: string | null
+  offer_not_ends_with?: string | null
   listings_every?: ListingWhereInput | null
   listings_some?: ListingWhereInput | null
   listings_none?: ListingWhereInput | null
@@ -6942,6 +7058,34 @@ export type VendorWhereInputInputObject =
   | { name: 'phone_not_starts_with', alias?: string  } 
   | { name: 'phone_ends_with', alias?: string  } 
   | { name: 'phone_not_ends_with', alias?: string  } 
+  | { name: 'profilePhoto', alias?: string  } 
+  | { name: 'profilePhoto_not', alias?: string  } 
+  | { name: 'profilePhoto_in', alias?: string  } 
+  | { name: 'profilePhoto_not_in', alias?: string  } 
+  | { name: 'profilePhoto_lt', alias?: string  } 
+  | { name: 'profilePhoto_lte', alias?: string  } 
+  | { name: 'profilePhoto_gt', alias?: string  } 
+  | { name: 'profilePhoto_gte', alias?: string  } 
+  | { name: 'profilePhoto_contains', alias?: string  } 
+  | { name: 'profilePhoto_not_contains', alias?: string  } 
+  | { name: 'profilePhoto_starts_with', alias?: string  } 
+  | { name: 'profilePhoto_not_starts_with', alias?: string  } 
+  | { name: 'profilePhoto_ends_with', alias?: string  } 
+  | { name: 'profilePhoto_not_ends_with', alias?: string  } 
+  | { name: 'offer', alias?: string  } 
+  | { name: 'offer_not', alias?: string  } 
+  | { name: 'offer_in', alias?: string  } 
+  | { name: 'offer_not_in', alias?: string  } 
+  | { name: 'offer_lt', alias?: string  } 
+  | { name: 'offer_lte', alias?: string  } 
+  | { name: 'offer_gt', alias?: string  } 
+  | { name: 'offer_gte', alias?: string  } 
+  | { name: 'offer_contains', alias?: string  } 
+  | { name: 'offer_not_contains', alias?: string  } 
+  | { name: 'offer_starts_with', alias?: string  } 
+  | { name: 'offer_not_starts_with', alias?: string  } 
+  | { name: 'offer_ends_with', alias?: string  } 
+  | { name: 'offer_not_ends_with', alias?: string  } 
   | { name: 'listings_every', alias?: string  } 
   | { name: 'listings_some', alias?: string  } 
   | { name: 'listings_none', alias?: string  } 
@@ -7691,20 +7835,20 @@ export interface PictureWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  url?: string | null
-  url_not?: string | null
-  url_in?: string[]
-  url_not_in?: string[]
-  url_lt?: string | null
-  url_lte?: string | null
-  url_gt?: string | null
-  url_gte?: string | null
-  url_contains?: string | null
-  url_not_contains?: string | null
-  url_starts_with?: string | null
-  url_not_starts_with?: string | null
-  url_ends_with?: string | null
-  url_not_ends_with?: string | null
+  src?: string | null
+  src_not?: string | null
+  src_in?: string[]
+  src_not_in?: string[]
+  src_lt?: string | null
+  src_lte?: string | null
+  src_gt?: string | null
+  src_gte?: string | null
+  src_contains?: string | null
+  src_not_contains?: string | null
+  src_starts_with?: string | null
+  src_not_starts_with?: string | null
+  src_ends_with?: string | null
+  src_not_ends_with?: string | null
   listing?: ListingWhereInput | null
   AND?: PictureWhereInput[]
   OR?: PictureWhereInput[]
@@ -7726,20 +7870,20 @@ export type PictureWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'url_not', alias?: string  } 
-  | { name: 'url_in', alias?: string  } 
-  | { name: 'url_not_in', alias?: string  } 
-  | { name: 'url_lt', alias?: string  } 
-  | { name: 'url_lte', alias?: string  } 
-  | { name: 'url_gt', alias?: string  } 
-  | { name: 'url_gte', alias?: string  } 
-  | { name: 'url_contains', alias?: string  } 
-  | { name: 'url_not_contains', alias?: string  } 
-  | { name: 'url_starts_with', alias?: string  } 
-  | { name: 'url_not_starts_with', alias?: string  } 
-  | { name: 'url_ends_with', alias?: string  } 
-  | { name: 'url_not_ends_with', alias?: string  } 
+  | { name: 'src', alias?: string  } 
+  | { name: 'src_not', alias?: string  } 
+  | { name: 'src_in', alias?: string  } 
+  | { name: 'src_not_in', alias?: string  } 
+  | { name: 'src_lt', alias?: string  } 
+  | { name: 'src_lte', alias?: string  } 
+  | { name: 'src_gt', alias?: string  } 
+  | { name: 'src_gte', alias?: string  } 
+  | { name: 'src_contains', alias?: string  } 
+  | { name: 'src_not_contains', alias?: string  } 
+  | { name: 'src_starts_with', alias?: string  } 
+  | { name: 'src_not_starts_with', alias?: string  } 
+  | { name: 'src_ends_with', alias?: string  } 
+  | { name: 'src_not_ends_with', alias?: string  } 
   | { name: 'listing', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
@@ -7824,6 +7968,8 @@ export interface VendorCreateInput {
   email?: string
   password?: string
   phone?: string
+  profilePhoto?: string | null
+  offer?: string | null
   listings?: ListingCreateManyWithoutVendorInput | null
   vendorType?: prisma.VENDOR_TYPE | null
 }
@@ -7835,6 +7981,8 @@ export type VendorCreateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'profilePhoto', alias?: string  } 
+  | { name: 'offer', alias?: string  } 
   | { name: 'listings', alias?: string  } 
   | { name: 'vendorType', alias?: string  } 
   
@@ -7855,6 +8003,7 @@ export interface ListingCreateWithoutVendorInput {
   reviews?: ReviewCreateManyWithoutListingInput | null
   pricePerPlate?: number
   views?: ViewsCreateOneWithoutListingInput | null
+  coverPhoto?: string
   bookings?: BookingCreateManyWithoutListingInput | null
   photos?: PictureCreateManyWithoutListingInput | null
 }
@@ -7867,6 +8016,7 @@ export type ListingCreateWithoutVendorInputInputObject =
   | { name: 'reviews', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -8026,6 +8176,7 @@ export interface ListingCreateInput {
   vendor?: VendorCreateOneWithoutListingsInput
   pricePerPlate?: number
   views?: ViewsCreateOneWithoutListingInput | null
+  coverPhoto?: string
   bookings?: BookingCreateManyWithoutListingInput | null
   photos?: PictureCreateManyWithoutListingInput | null
 }
@@ -8039,6 +8190,7 @@ export type ListingCreateInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -8058,6 +8210,8 @@ export interface VendorCreateWithoutListingsInput {
   email?: string
   password?: string
   phone?: string
+  profilePhoto?: string | null
+  offer?: string | null
   vendorType?: prisma.VENDOR_TYPE | null
 }
 export type VendorCreateWithoutListingsInputInputObject =
@@ -8068,6 +8222,8 @@ export type VendorCreateWithoutListingsInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'profilePhoto', alias?: string  } 
+  | { name: 'offer', alias?: string  } 
   | { name: 'vendorType', alias?: string  } 
   
 export interface PictureCreateManyWithoutListingInput {
@@ -8081,12 +8237,12 @@ export type PictureCreateManyWithoutListingInputInputObject =
   
 export interface PictureCreateWithoutListingInput {
   id?: string | null
-  url?: string
+  src?: string
 }
 export type PictureCreateWithoutListingInputInputObject =
   | Extract<keyof PictureCreateWithoutListingInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'url', alias?: string  } 
+  | { name: 'src', alias?: string  } 
   
 export interface LocationCreateOneInput {
   create?: LocationCreateInput | null
@@ -8192,6 +8348,8 @@ export interface VendorUpdateInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  profilePhoto?: string | null
+  offer?: string | null
   listings?: ListingUpdateManyWithoutVendorInput | null
   vendorType?: prisma.VENDOR_TYPE | null
 }
@@ -8202,6 +8360,8 @@ export type VendorUpdateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'profilePhoto', alias?: string  } 
+  | { name: 'offer', alias?: string  } 
   | { name: 'listings', alias?: string  } 
   | { name: 'vendorType', alias?: string  } 
   
@@ -8244,6 +8404,7 @@ export interface ListingUpdateWithoutVendorDataInput {
   reviews?: ReviewUpdateManyWithoutListingInput | null
   pricePerPlate?: number | null
   views?: ViewsUpdateOneWithoutListingInput | null
+  coverPhoto?: string | null
   bookings?: BookingUpdateManyWithoutListingInput | null
   photos?: PictureUpdateManyWithoutListingInput | null
 }
@@ -8255,6 +8416,7 @@ export type ListingUpdateWithoutVendorDataInputInputObject =
   | { name: 'reviews', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -8674,6 +8836,7 @@ export interface ListingUpdateDataInput {
   vendor?: VendorUpdateOneRequiredWithoutListingsInput | null
   pricePerPlate?: number | null
   views?: ViewsUpdateOneWithoutListingInput | null
+  coverPhoto?: string | null
   bookings?: BookingUpdateManyWithoutListingInput | null
   photos?: PictureUpdateManyWithoutListingInput | null
 }
@@ -8686,6 +8849,7 @@ export type ListingUpdateDataInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -8708,6 +8872,8 @@ export interface VendorUpdateWithoutListingsDataInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  profilePhoto?: string | null
+  offer?: string | null
   vendorType?: prisma.VENDOR_TYPE | null
 }
 export type VendorUpdateWithoutListingsDataInputInputObject =
@@ -8717,6 +8883,8 @@ export type VendorUpdateWithoutListingsDataInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'profilePhoto', alias?: string  } 
+  | { name: 'offer', alias?: string  } 
   | { name: 'vendorType', alias?: string  } 
   
 export interface VendorUpsertWithoutListingsInput {
@@ -8761,11 +8929,11 @@ export type PictureUpdateWithWhereUniqueWithoutListingInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface PictureUpdateWithoutListingDataInput {
-  url?: string | null
+  src?: string | null
 }
 export type PictureUpdateWithoutListingDataInputInputObject =
   | Extract<keyof PictureUpdateWithoutListingDataInput, string>
-  | { name: 'url', alias?: string  } 
+  | { name: 'src', alias?: string  } 
   
 export interface PictureUpsertWithWhereUniqueWithoutListingInput {
   where?: PictureWhereUniqueInput
@@ -8793,20 +8961,20 @@ export interface PictureScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  url?: string | null
-  url_not?: string | null
-  url_in?: string[]
-  url_not_in?: string[]
-  url_lt?: string | null
-  url_lte?: string | null
-  url_gt?: string | null
-  url_gte?: string | null
-  url_contains?: string | null
-  url_not_contains?: string | null
-  url_starts_with?: string | null
-  url_not_starts_with?: string | null
-  url_ends_with?: string | null
-  url_not_ends_with?: string | null
+  src?: string | null
+  src_not?: string | null
+  src_in?: string[]
+  src_not_in?: string[]
+  src_lt?: string | null
+  src_lte?: string | null
+  src_gt?: string | null
+  src_gte?: string | null
+  src_contains?: string | null
+  src_not_contains?: string | null
+  src_starts_with?: string | null
+  src_not_starts_with?: string | null
+  src_ends_with?: string | null
+  src_not_ends_with?: string | null
   AND?: PictureScalarWhereInput[]
   OR?: PictureScalarWhereInput[]
   NOT?: PictureScalarWhereInput[]
@@ -8827,20 +8995,20 @@ export type PictureScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'url', alias?: string  } 
-  | { name: 'url_not', alias?: string  } 
-  | { name: 'url_in', alias?: string  } 
-  | { name: 'url_not_in', alias?: string  } 
-  | { name: 'url_lt', alias?: string  } 
-  | { name: 'url_lte', alias?: string  } 
-  | { name: 'url_gt', alias?: string  } 
-  | { name: 'url_gte', alias?: string  } 
-  | { name: 'url_contains', alias?: string  } 
-  | { name: 'url_not_contains', alias?: string  } 
-  | { name: 'url_starts_with', alias?: string  } 
-  | { name: 'url_not_starts_with', alias?: string  } 
-  | { name: 'url_ends_with', alias?: string  } 
-  | { name: 'url_not_ends_with', alias?: string  } 
+  | { name: 'src', alias?: string  } 
+  | { name: 'src_not', alias?: string  } 
+  | { name: 'src_in', alias?: string  } 
+  | { name: 'src_not_in', alias?: string  } 
+  | { name: 'src_lt', alias?: string  } 
+  | { name: 'src_lte', alias?: string  } 
+  | { name: 'src_gt', alias?: string  } 
+  | { name: 'src_gte', alias?: string  } 
+  | { name: 'src_contains', alias?: string  } 
+  | { name: 'src_not_contains', alias?: string  } 
+  | { name: 'src_starts_with', alias?: string  } 
+  | { name: 'src_not_starts_with', alias?: string  } 
+  | { name: 'src_ends_with', alias?: string  } 
+  | { name: 'src_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -8855,11 +9023,11 @@ export type PictureUpdateManyWithWhereNestedInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface PictureUpdateManyDataInput {
-  url?: string | null
+  src?: string | null
 }
 export type PictureUpdateManyDataInputInputObject =
   | Extract<keyof PictureUpdateManyDataInput, string>
-  | { name: 'url', alias?: string  } 
+  | { name: 'src', alias?: string  } 
   
 export interface ListingUpsertWithWhereUniqueNestedInput {
   where?: ListingWhereUniqueInput
@@ -8947,6 +9115,20 @@ export interface ListingScalarWhereInput {
   pricePerPlate_lte?: number | null
   pricePerPlate_gt?: number | null
   pricePerPlate_gte?: number | null
+  coverPhoto?: string | null
+  coverPhoto_not?: string | null
+  coverPhoto_in?: string[]
+  coverPhoto_not_in?: string[]
+  coverPhoto_lt?: string | null
+  coverPhoto_lte?: string | null
+  coverPhoto_gt?: string | null
+  coverPhoto_gte?: string | null
+  coverPhoto_contains?: string | null
+  coverPhoto_not_contains?: string | null
+  coverPhoto_starts_with?: string | null
+  coverPhoto_not_starts_with?: string | null
+  coverPhoto_ends_with?: string | null
+  coverPhoto_not_ends_with?: string | null
   AND?: ListingScalarWhereInput[]
   OR?: ListingScalarWhereInput[]
   NOT?: ListingScalarWhereInput[]
@@ -9027,6 +9209,20 @@ export type ListingScalarWhereInputInputObject =
   | { name: 'pricePerPlate_lte', alias?: string  } 
   | { name: 'pricePerPlate_gt', alias?: string  } 
   | { name: 'pricePerPlate_gte', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
+  | { name: 'coverPhoto_not', alias?: string  } 
+  | { name: 'coverPhoto_in', alias?: string  } 
+  | { name: 'coverPhoto_not_in', alias?: string  } 
+  | { name: 'coverPhoto_lt', alias?: string  } 
+  | { name: 'coverPhoto_lte', alias?: string  } 
+  | { name: 'coverPhoto_gt', alias?: string  } 
+  | { name: 'coverPhoto_gte', alias?: string  } 
+  | { name: 'coverPhoto_contains', alias?: string  } 
+  | { name: 'coverPhoto_not_contains', alias?: string  } 
+  | { name: 'coverPhoto_starts_with', alias?: string  } 
+  | { name: 'coverPhoto_not_starts_with', alias?: string  } 
+  | { name: 'coverPhoto_ends_with', alias?: string  } 
+  | { name: 'coverPhoto_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -9045,6 +9241,7 @@ export interface ListingUpdateManyDataInput {
   description?: string | null
   maxGuests?: number | null
   pricePerPlate?: number | null
+  coverPhoto?: string | null
 }
 export type ListingUpdateManyDataInputInputObject =
   | Extract<keyof ListingUpdateManyDataInput, string>
@@ -9052,6 +9249,7 @@ export type ListingUpdateManyDataInputInputObject =
   | { name: 'description', alias?: string  } 
   | { name: 'maxGuests', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   
 export interface savedListUpsertNestedInput {
   update?: savedListUpdateDataInput
@@ -9362,6 +9560,8 @@ export interface VendorUpdateManyMutationInput {
   email?: string | null
   password?: string | null
   phone?: string | null
+  profilePhoto?: string | null
+  offer?: string | null
   vendorType?: prisma.VENDOR_TYPE | null
 }
 export type VendorUpdateManyMutationInputInputObject =
@@ -9371,6 +9571,8 @@ export type VendorUpdateManyMutationInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'phone', alias?: string  } 
+  | { name: 'profilePhoto', alias?: string  } 
+  | { name: 'offer', alias?: string  } 
   | { name: 'vendorType', alias?: string  } 
   
 export interface UserUpdateInput {
@@ -9443,6 +9645,7 @@ export interface ListingUpdateInput {
   vendor?: VendorUpdateOneRequiredWithoutListingsInput | null
   pricePerPlate?: number | null
   views?: ViewsUpdateOneWithoutListingInput | null
+  coverPhoto?: string | null
   bookings?: BookingUpdateManyWithoutListingInput | null
   photos?: PictureUpdateManyWithoutListingInput | null
 }
@@ -9455,6 +9658,7 @@ export type ListingUpdateInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -9463,6 +9667,7 @@ export interface ListingUpdateManyMutationInput {
   description?: string | null
   maxGuests?: number | null
   pricePerPlate?: number | null
+  coverPhoto?: string | null
 }
 export type ListingUpdateManyMutationInputInputObject =
   | Extract<keyof ListingUpdateManyMutationInput, string>
@@ -9470,16 +9675,17 @@ export type ListingUpdateManyMutationInputInputObject =
   | { name: 'description', alias?: string  } 
   | { name: 'maxGuests', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   
 export interface PictureCreateInput {
   id?: string | null
-  url?: string
+  src?: string
   listing?: ListingCreateOneWithoutPhotosInput
 }
 export type PictureCreateInputInputObject =
   | Extract<keyof PictureCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'url', alias?: string  } 
+  | { name: 'src', alias?: string  } 
   | { name: 'listing', alias?: string  } 
   
 export interface ListingCreateOneWithoutPhotosInput {
@@ -9500,6 +9706,7 @@ export interface ListingCreateWithoutPhotosInput {
   vendor?: VendorCreateOneWithoutListingsInput
   pricePerPlate?: number
   views?: ViewsCreateOneWithoutListingInput | null
+  coverPhoto?: string
   bookings?: BookingCreateManyWithoutListingInput | null
 }
 export type ListingCreateWithoutPhotosInputInputObject =
@@ -9512,15 +9719,16 @@ export type ListingCreateWithoutPhotosInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   
 export interface PictureUpdateInput {
-  url?: string | null
+  src?: string | null
   listing?: ListingUpdateOneRequiredWithoutPhotosInput | null
 }
 export type PictureUpdateInputInputObject =
   | Extract<keyof PictureUpdateInput, string>
-  | { name: 'url', alias?: string  } 
+  | { name: 'src', alias?: string  } 
   | { name: 'listing', alias?: string  } 
   
 export interface ListingUpdateOneRequiredWithoutPhotosInput {
@@ -9544,6 +9752,7 @@ export interface ListingUpdateWithoutPhotosDataInput {
   vendor?: VendorUpdateOneRequiredWithoutListingsInput | null
   pricePerPlate?: number | null
   views?: ViewsUpdateOneWithoutListingInput | null
+  coverPhoto?: string | null
   bookings?: BookingUpdateManyWithoutListingInput | null
 }
 export type ListingUpdateWithoutPhotosDataInputInputObject =
@@ -9555,6 +9764,7 @@ export type ListingUpdateWithoutPhotosDataInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   
 export interface ListingUpsertWithoutPhotosInput {
@@ -9567,11 +9777,11 @@ export type ListingUpsertWithoutPhotosInputInputObject =
   | { name: 'create', alias?: string  } 
   
 export interface PictureUpdateManyMutationInput {
-  url?: string | null
+  src?: string | null
 }
 export type PictureUpdateManyMutationInputInputObject =
   | Extract<keyof PictureUpdateManyMutationInput, string>
-  | { name: 'url', alias?: string  } 
+  | { name: 'src', alias?: string  } 
   
 export interface ViewsCreateInput {
   id?: string | null
@@ -9601,6 +9811,7 @@ export interface ListingCreateWithoutViewsInput {
   reviews?: ReviewCreateManyWithoutListingInput | null
   vendor?: VendorCreateOneWithoutListingsInput
   pricePerPlate?: number
+  coverPhoto?: string
   bookings?: BookingCreateManyWithoutListingInput | null
   photos?: PictureCreateManyWithoutListingInput | null
 }
@@ -9613,6 +9824,7 @@ export type ListingCreateWithoutViewsInputInputObject =
   | { name: 'reviews', alias?: string  } 
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -9645,6 +9857,7 @@ export interface ListingUpdateWithoutViewsDataInput {
   reviews?: ReviewUpdateManyWithoutListingInput | null
   vendor?: VendorUpdateOneRequiredWithoutListingsInput | null
   pricePerPlate?: number | null
+  coverPhoto?: string | null
   bookings?: BookingUpdateManyWithoutListingInput | null
   photos?: PictureUpdateManyWithoutListingInput | null
 }
@@ -9656,6 +9869,7 @@ export type ListingUpdateWithoutViewsDataInputInputObject =
   | { name: 'reviews', alias?: string  } 
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -9707,6 +9921,7 @@ export interface ListingCreateWithoutReviewsInput {
   vendor?: VendorCreateOneWithoutListingsInput
   pricePerPlate?: number
   views?: ViewsCreateOneWithoutListingInput | null
+  coverPhoto?: string
   bookings?: BookingCreateManyWithoutListingInput | null
   photos?: PictureCreateManyWithoutListingInput | null
 }
@@ -9719,6 +9934,7 @@ export type ListingCreateWithoutReviewsInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -9755,6 +9971,7 @@ export interface ListingUpdateWithoutReviewsDataInput {
   vendor?: VendorUpdateOneRequiredWithoutListingsInput | null
   pricePerPlate?: number | null
   views?: ViewsUpdateOneWithoutListingInput | null
+  coverPhoto?: string | null
   bookings?: BookingUpdateManyWithoutListingInput | null
   photos?: PictureUpdateManyWithoutListingInput | null
 }
@@ -9766,6 +9983,7 @@ export type ListingUpdateWithoutReviewsDataInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'bookings', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
@@ -9826,6 +10044,7 @@ export interface ListingCreateWithoutBookingsInput {
   vendor?: VendorCreateOneWithoutListingsInput
   pricePerPlate?: number
   views?: ViewsCreateOneWithoutListingInput | null
+  coverPhoto?: string
   photos?: PictureCreateManyWithoutListingInput | null
 }
 export type ListingCreateWithoutBookingsInputInputObject =
@@ -9838,6 +10057,7 @@ export type ListingCreateWithoutBookingsInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
 export interface BookingUpdateInput {
@@ -9878,6 +10098,7 @@ export interface ListingUpdateWithoutBookingsDataInput {
   vendor?: VendorUpdateOneRequiredWithoutListingsInput | null
   pricePerPlate?: number | null
   views?: ViewsUpdateOneWithoutListingInput | null
+  coverPhoto?: string | null
   photos?: PictureUpdateManyWithoutListingInput | null
 }
 export type ListingUpdateWithoutBookingsDataInputInputObject =
@@ -9889,6 +10110,7 @@ export type ListingUpdateWithoutBookingsDataInputInputObject =
   | { name: 'vendor', alias?: string  } 
   | { name: 'pricePerPlate', alias?: string  } 
   | { name: 'views', alias?: string  } 
+  | { name: 'coverPhoto', alias?: string  } 
   | { name: 'photos', alias?: string  } 
   
 export interface ListingUpsertWithoutBookingsInput {
@@ -10512,6 +10734,8 @@ export type ListingOrderByInputValues =
   | 'maxGuests_DESC'
   | 'pricePerPlate_ASC'
   | 'pricePerPlate_DESC'
+  | 'coverPhoto_ASC'
+  | 'coverPhoto_DESC'
   
 export type ReviewOrderByInputValues =
   | 'id_ASC'
@@ -10556,8 +10780,8 @@ export type PaymentOrderByInputValues =
 export type PictureOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'url_ASC'
-  | 'url_DESC'
+  | 'src_ASC'
+  | 'src_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
@@ -10580,6 +10804,10 @@ export type VendorOrderByInputValues =
   | 'password_DESC'
   | 'phone_ASC'
   | 'phone_DESC'
+  | 'profilePhoto_ASC'
+  | 'profilePhoto_DESC'
+  | 'offer_ASC'
+  | 'offer_DESC'
   | 'vendorType_ASC'
   | 'vendorType_DESC'
   

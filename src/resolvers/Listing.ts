@@ -4,6 +4,8 @@ import { asNexusMethod } from 'nexus'
 
 export const Upload = asNexusMethod(GraphQLUpload, "upload");
 
+
+//@ts-ignore
 export const Listing = prismaObjectType({
     name: 'Listing',
     definition(t) {
@@ -14,13 +16,13 @@ export const Listing = prismaObjectType({
             'createdAt',
             'updatedAt',
             'maxGuests',
+            'vendor',
+            'pricePerPlate',
+            'views',
             {
                 name: 'reviews',
                 args: []
             },
-            'vendor',
-            'pricePerPlate',
-            'views',
             {
                 name: 'bookings',
                 args: []

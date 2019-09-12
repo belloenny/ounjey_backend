@@ -2,8 +2,9 @@ import { stringArg, idArg, mutationType,arg,intArg, floatArg } from 'nexus'
 import { hash,compare } from 'bcrypt'
 import { isNil } from 'ramda'
 import { sign } from 'jsonwebtoken'
+import {Photo}  from '../utils'
 import { APP_SECRET,getFacebookUser, getUserId } from '../utils'
-import { createPrismaUserFromFacebook } from '../auth'
+import {  createUserFromFacebook } from '../auth'
 import { processUpload } from '../uploads';
 
 export const Mutation = mutationType({
@@ -33,7 +34,7 @@ export const Mutation = mutationType({
                 }
             }
         })
-        t.field('signupWithFaceBook',{
+        t.field('loginOrSignUpFacebook',{
             type:'AuthPayload',
             nullable:true,
             args: {
@@ -48,7 +49,7 @@ export const Mutation = mutationType({
                 const facebookUser = await getFacebookUser(idToken)
                 user = await ctx.prisma.user({email: facebookUser.email})
                 if(isNil(user)) {
-                    user = await createPrismaUserFromFacebook(ctx,facebookUser,password)
+                    user = await createUserFromFacebook(ctx,facebookUser,password)
                 }
                 return {
                     user,
@@ -78,32 +79,7 @@ export const Mutation = mutationType({
                 }
             }
         })
-        t.field('updateuser',{
-            type: 'User',
-            args: {
-                firstName: stringArg(),
-                lastName:  stringArg(),
-                email:      stringArg(),
-                phone:      intArg(),
-                address:    stringArg(),
-            },
-            resolve: (parent, {firstname, lastname, email, address, phone, }, ctx) => {
-                const userId = getUserId(ctx)
-                return ctx.prisma.updateUser({
-                    where: {
-                        id: userId
-                    },
-                    data:{
-                        firstname,
-                        lastname,
-                        email,
-                        phone,
-                        address,
-                    }
-                    
-                })
-            }
-        })
+        
         t.field('signupVendor',{
             type: 'AuthPayloadVendor',
             args: {
@@ -112,7 +88,7 @@ export const Mutation = mutationType({
                 firstName: stringArg(),
                 lastName: stringArg(),
                 phone: stringArg(),
-                vendorType: stringArg(),
+                vendorType: arg({type:'VENDOR_TYPE',required:true}),
             },
             resolve:async(parent,{email,password,firstName,lastName,phone,vendorType},ctx) => {
                 const hashedPassword = await hash(password,10)
@@ -125,7 +101,6 @@ export const Mutation = mutationType({
                     password: hashedPassword,
             
                 })
-
                 return {
                     token: sign({userId: vendor.id},APP_SECRET),
                     vendor,
@@ -154,87 +129,60 @@ export const Mutation = mutationType({
                 }
             }
         })
-        t.field('updatevendor',{
-            type: 'Vendor',
-            args: {
-                firstName: stringArg(),
-                lastName:  stringArg(),
-                email:      stringArg(),
-                phone:      intArg(),
-                vendorType: stringArg(),
-            },
-            resolve: (parent, {firstname, lastname, email, phone, vendorType}, ctx) => {
-                const userId = getUserId(ctx)
-                return ctx.prisma.updateVendor({
-                    where: {
-                        id: userId
-                    },
-                    data:{
-                        firstname,
-                        lastname,
-                        email,
-                        phone,
-                        vendorType,
-                    }
-                    
-                })
-            }
-        })
-        t.field('deletevendor', {
-            type: 'Vendor',
-            args: {
-                id: idArg(),
-            },
-            resolve: (parents, {id}, ctx) => {
-                return ctx.prisma.deletevendor({
-                    where: {
-                        id
-                    }
-                })
-            }
-        })
+        
         t.field('createlisting',{
-            type: 'ListingPhotos',
+            type: 'Listing',
             args: {
                 title:          stringArg(),
                 description:    stringArg(),
                 pricePerPlate:  intArg(),
                 maxGuests:      intArg(),
-                photo:          arg({type:"Upload",required:true,list:true}),
+                coverPhoto:     arg({type:"Upload",required:true}),
+                vendorID:       idArg()
             },
             resolve: async(parent,{
                 title,
                 description,
                 pricePerPlate,
                 maxGuests,
-                photo,
+                vendorID,
+                coverPhoto,
             },ctx) => {
-                const vendorID = getUserId(ctx)
-                const photos = await Promise.all(photo.map(processUpload))
+                
+                const photo = await processUpload(coverPhoto)
+                coverPhoto = photo.path
                 const listing = await ctx.prisma.createListing({
                     title,
                     description,
                     pricePerPlate,
+                    coverPhoto:`http://localhost:4000/images/${coverPhoto}`,
                     vendor:{connect:{id: vendorID}},
                     maxGuests
                 })
-
+                return listing
+            }
+        })
+        t.list.field('uploadPhotos', {
+            type: 'Picture',
+            args: {
+                photos: arg({type:'Upload',required:true,list:true}),
+                listing: idArg()
+            },
+            resolve: async (parent,{photos,listing},ctx) => {
+                const pictures = await Promise.all(photos.map(processUpload))
                 let urls = []
-                urls = photos.map(photo => {
-                    //@ts-ignore
+                urls = pictures.map((photo:Photo) => {
                     return photo.path
                 })
-                const pictures =   urls.map(async url => {
+                const files = urls.map(async src => {
                     const results = await ctx.prisma.createPicture({
-                        url,
-                        listing: {connect: {id: listing.id}}
+                        src:`http://localhost:4000/images/${src}`,
+                        listing: {connect: {id: listing}}
                     })
                     return results
                 })
-                return {
-                    pictures,
-                    listing
-                }
+                return files
+                
             }
         })
         t.field('createReview', {
@@ -262,7 +210,7 @@ export const Mutation = mutationType({
                 price:          floatArg(),
                 totalPrice:     floatArg(),
                 serviceFee:     floatArg(),
-                type:           stringArg()
+                type:           arg({type:'PAYMENT_PROVIDER',required:true})
 
             },
             resolve: async (parent,
@@ -300,22 +248,6 @@ export const Mutation = mutationType({
 
             }
         })
-        t.field('deleteBooking', {
-            type:'Booking',
-            args: {
-                id: idArg()
-            },
-            resolve: (parent,{id},ctx) => {
-                // refund user
-
-                return ctx.prisma.deleteBooking({
-                    where: {
-                        id
-                    }
-                })
-            }
-            
-        })
         t.field('uploadProfilePhoto',{
             type: 'User',
             args: {
@@ -337,19 +269,7 @@ export const Mutation = mutationType({
                 
             }
         })
-        t.field('deleteReview', {
-            type: 'Review',
-            args: {
-                id:  idArg(),  
-            },
-            resolve: (parent,{id}, ctx) => {
-                return ctx.prisma.deleteReview({
-                    where: {
-                        id
-                    }
-                })
-            }
-        })        
+              
 
     }
 

@@ -1,12 +1,14 @@
 type Vendor {
-    id:          ID! @id @unique
-    createdAt:   DateTime! @createdAt
-    updatedAt:   DateTime! @updatedAt
-    firstName:   String!
-    lastName:    String!
-    email:       String! @unique
-    password:    String!
-    phone:       String!
+    id:             ID! @id @unique
+    createdAt:      DateTime! @createdAt
+    updatedAt:      DateTime! @updatedAt
+    firstName:      String!
+    lastName:       String!
+    email:          String! @unique
+    password:       String!
+    phone:          String!
+    profilePhoto:   String
+    offer:          String
     listings:    [Listing!]!
     vendorType:  VENDOR_TYPE
    
@@ -42,14 +44,15 @@ type Listing {
     reviews:            [Review!]!
     vendor:             Vendor!
     pricePerPlate:      Int!
-    views:              Views 
+    views:              Views
+    coverPhoto:          String! 
     bookings:           [Booking!]!
     photos:             [Picture!]!
 }
 
 type Picture {
     id:         ID! @id @unique
-    url:        String!
+    src:        String!
     listing:    Listing!
 }
 
@@ -103,6 +106,7 @@ type savedList {
     id:             ID! @id @unique
     listings:       [Listing!]!
 }
+
 
 enum PAYMENT_PROVIDER {
     MPESA

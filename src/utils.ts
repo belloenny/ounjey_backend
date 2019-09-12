@@ -1,7 +1,7 @@
 import { verify } from 'jsonwebtoken'
 import { Context } from './types'
 import axios from "axios"
-import { User } from './generated/prisma-client';
+import { User, Picture } from './generated/prisma-client';
 
 export const APP_SECRET="ounjey_typescript"
 
@@ -22,13 +22,32 @@ export function getUserId(context:Context) {
 }
 
 
+interface ProfilePicture {
+  data: Picture
+}
+
+export interface FacebookUser {
+  id: string
+  email: string | null
+  first_name: string
+  last_name: string
+  picture:   ProfilePicture
+}
+
+export interface Photo {
+  id:       string
+  filename: string
+  path:     string
+}
+
+
 const ENDPOINT = "https://graph.facebook.com"
 const API_VERSION = "v4.0"
-const fields = `id,first_name,last_name,email,picture`
+const fields = `first_name,last_name,birthday,locale,education,work,email,gender,picture`
 
 export const getFacebookUser = async (
   facebookToken: string,
-): Promise<User> => {
+): Promise<FacebookUser> => {
   const endpoint = `${ENDPOINT}/${API_VERSION}/me?fields=${fields}&access_token=${facebookToken}`
 
   try {

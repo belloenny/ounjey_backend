@@ -2511,6 +2511,30 @@ export default {
             "deprecationReason": null
           },
           {
+            "name": "profilePhoto",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "offer",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "listings",
             "description": null,
             "args": [
@@ -3533,6 +3557,162 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "ViewsWhereInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -5527,6 +5707,318 @@ export default {
           },
           {
             "name": "phone_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10048,7 +10540,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10058,7 +10550,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not",
+            "name": "src_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10068,7 +10560,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_in",
+            "name": "src_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -10086,7 +10578,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_in",
+            "name": "src_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -10104,7 +10596,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_lt",
+            "name": "src_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10114,7 +10606,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_lte",
+            "name": "src_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10124,7 +10616,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_gt",
+            "name": "src_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10134,7 +10626,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_gte",
+            "name": "src_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10144,7 +10636,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_contains",
+            "name": "src_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10154,7 +10646,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_contains",
+            "name": "src_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10164,7 +10656,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_starts_with",
+            "name": "src_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10174,7 +10666,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_starts_with",
+            "name": "src_not_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10184,7 +10676,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_ends_with",
+            "name": "src_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10194,7 +10686,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_ends_with",
+            "name": "src_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -10360,6 +10852,18 @@ export default {
           },
           {
             "name": "pricePerPlate_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "coverPhoto_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "coverPhoto_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -10599,6 +11103,22 @@ export default {
               "kind": "OBJECT",
               "name": "Views",
               "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -12019,13 +12539,13 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "url_ASC",
+            "name": "src_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "url_DESC",
+            "name": "src_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -12079,7 +12599,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "args": [],
             "type": {
@@ -12216,6 +12736,30 @@ export default {
           },
           {
             "name": "phone_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "profilePhoto_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "profilePhoto_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "offer_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "offer_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -16922,6 +17466,26 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "profilePhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "listings",
             "description": null,
             "type": {
@@ -17082,6 +17646,20 @@ export default {
               "kind": "INPUT_OBJECT",
               "name": "ViewsCreateOneWithoutListingInput",
               "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "defaultValue": null
           },
@@ -17870,6 +18448,20 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bookings",
             "description": null,
             "type": {
@@ -18012,6 +18604,26 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "profilePhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "vendorType",
             "description": null,
             "type": {
@@ -18090,7 +18702,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "NON_NULL",
@@ -18591,6 +19203,26 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "profilePhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "listings",
             "description": null,
             "type": {
@@ -18889,6 +19521,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "ViewsUpdateOneWithoutListingInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -21107,6 +21749,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bookings",
             "description": null,
             "type": {
@@ -21230,6 +21882,26 @@ export default {
           },
           {
             "name": "phone",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "profilePhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21511,7 +22183,7 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21741,7 +22413,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21751,7 +22423,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not",
+            "name": "src_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21761,7 +22433,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_in",
+            "name": "src_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -21779,7 +22451,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_in",
+            "name": "src_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -21797,7 +22469,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_lt",
+            "name": "src_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21807,7 +22479,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_lte",
+            "name": "src_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21817,7 +22489,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_gt",
+            "name": "src_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21827,7 +22499,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_gte",
+            "name": "src_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21837,7 +22509,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_contains",
+            "name": "src_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21847,7 +22519,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_contains",
+            "name": "src_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21857,7 +22529,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_starts_with",
+            "name": "src_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21867,7 +22539,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_starts_with",
+            "name": "src_not_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21877,7 +22549,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_ends_with",
+            "name": "src_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -21887,7 +22559,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url_not_ends_with",
+            "name": "src_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -22001,7 +22673,7 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -22927,6 +23599,162 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_in",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_lt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_lte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_gt",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_gte",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_contains",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_starts_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto_not_ends_with",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "AND",
             "description": null,
             "type": {
@@ -23066,6 +23894,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -24549,6 +25387,26 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "profilePhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "offer",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "vendorType",
             "description": null,
             "type": {
@@ -24931,6 +25789,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bookings",
             "description": null,
             "type": {
@@ -25000,6 +25868,16 @@ export default {
               "ofType": null
             },
             "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -25023,7 +25901,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "NON_NULL",
@@ -25193,6 +26071,20 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bookings",
             "description": null,
             "type": {
@@ -25214,7 +26106,7 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -25366,6 +26258,16 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bookings",
             "description": null,
             "type": {
@@ -25426,7 +26328,7 @@ export default {
         "fields": null,
         "inputFields": [
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -25617,6 +26519,20 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bookings",
             "description": null,
             "type": {
@@ -25785,6 +26701,16 @@ export default {
             "type": {
               "kind": "SCALAR",
               "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -26079,6 +27005,20 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "bookings",
             "description": null,
             "type": {
@@ -26267,6 +27207,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "ViewsUpdateOneWithoutListingInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -26607,6 +27557,20 @@ export default {
             "defaultValue": null
           },
           {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "photos",
             "description": null,
             "type": {
@@ -26815,6 +27779,16 @@ export default {
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "ViewsUpdateOneWithoutListingInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
               "ofType": null
             },
             "defaultValue": null
@@ -29262,6 +30236,30 @@ export default {
             "deprecationReason": null
           },
           {
+            "name": "profilePhoto",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "offer",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "vendorType",
             "description": null,
             "args": [],
@@ -30247,6 +31245,22 @@ export default {
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "coverPhoto",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -30486,7 +31500,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "url",
+            "name": "src",
             "description": null,
             "args": [],
             "type": {
